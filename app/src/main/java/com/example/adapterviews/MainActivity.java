@@ -15,9 +15,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView listView = new ListView(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ListView listView = new ListView(this);
+        setContentView(listView);
+        List<String> notes = new ArrayList<>();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -35,7 +38,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        setContentView(listView);
-        List<String> notes = new ArrayList<>();
     }
 }
