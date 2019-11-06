@@ -23,6 +23,6 @@ public class NewNoteActivity extends AppCompatActivity {
         editText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         linearLayout.addView(editText);
 
-
+        EditText notesBody = new EditText(this);
     }
 }
