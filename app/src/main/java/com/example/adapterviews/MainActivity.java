@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, "main activity", Toast.LENGTH_SHORT).show();
 
-        GridLayout gridLayout = findViewById(R.id.linearLayout);
+        GridLayout gridLayout = findViewById(R.id.gridLayout);
 
         Button addNote = new Button (this);
         addNote.setText("Add new note");
