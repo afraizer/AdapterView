@@ -22,28 +22,29 @@ public class GridLayoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid_layout);
 
+        Toast.makeText(this, "Grid Layout", Toast.LENGTH_SHORT).show();
         GridLayout gridLayout = new GridLayout(this);
+        gridLayout.setRowCount(2);
 
-//        Button addNote = new Button (this);
-//        addNote.setText("Add new note");
-//        addNote.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-//        gridLayout.addView(addNote);
-//
-//        addNote.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(GridLayoutActivity.this, NewNoteActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        Button addNewNote = new Button (this);
+        addNewNote.setText("Add new note");
+        addNewNote.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        gridLayout.addView(addNewNote);
 
-        Toast.makeText(this, "grid activity", Toast.LENGTH_SHORT).show();
+        addNewNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GridLayoutActivity.this, NewNoteActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Intent intent2 = getIntent();
         if (intent2 != null) {
             final String noteTitle = intent2.getStringExtra("title");
             final String noteBody = intent2.getStringExtra("body");
             final String spinnerSelction = intent2.getStringExtra("spinner");
-            
+
             ListView listView = new ListView(this);
             setContentView(listView);
             List<String> notePage = new ArrayList<>();
