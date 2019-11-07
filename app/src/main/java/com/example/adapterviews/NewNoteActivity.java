@@ -21,6 +21,7 @@ public class NewNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_note);
 
+        Toast.makeText(this, "new note activity", Toast.LENGTH_SHORT).show();
 
         final EditText editText = new EditText(this);
         editText.setHint("Title");
@@ -34,13 +35,11 @@ public class NewNoteActivity extends AppCompatActivity {
 
         gridLayout.addView(editText);
 
-        EditText notesBody = new EditText(this);
+        final EditText notesBody = new EditText(this);
         notesBody.setHint("Content");
-        //notesBody.setLayoutParams(new GridLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        //editText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        gridLayout.addView(notesBody);
+       gridLayout.addView(notesBody);
 
-        Spinner spinner = new Spinner(this);
+        final Spinner spinner = new Spinner(this);
         String[] spinnerArray = new String[] {"Work", "Personal"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, spinnerArray);
@@ -56,9 +55,11 @@ public class NewNoteActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
+                Intent intent = new Intent(NewNoteActivity.this, GridLayoutActivity.class);
                 intent.putExtra("title", editText.getText().toString());
-                NewNoteActivity.this.finish();
+                intent.putExtra("body", notesBody.getText().toString());
+                intent.putExtra("spinner", spinner.getSelectedItem().toString());
+                startActivity(intent);
             }
         });
     }
